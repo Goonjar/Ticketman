@@ -14,8 +14,14 @@ app.use(express.static('public'));
 
 app.use(bodyParser.json());
 
+
 // initialize routes
-app.use('/api',require('./routes/api'));
+app.use('/api', require('./routes/api'));
+//new route
+app.use('/venueapi', require('./routes/venueapi'));
+app.use('/ticketapi', require('./routes/ticketapi'));
+app.use('/userapi', require('./routes/userapi'));
+
 
 //Error handling
 app.use(function(err, req, res, next){

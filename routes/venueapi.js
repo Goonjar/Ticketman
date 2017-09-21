@@ -3,7 +3,7 @@ const router  = express.Router();
 const Venue = require('../models/venue')
 
 //get list of venues from db
-router.get('/venue', function(req, res, next){
+router.get('/venues', function(req, res, next){
   Venue.find({}).then(function(venues){
     res.send(venues);
   });

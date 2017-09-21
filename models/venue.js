@@ -10,7 +10,7 @@ const VenueSchema = new Schema({
   },
   address: {
     type: String
-  },
+  }
 
 });
 
