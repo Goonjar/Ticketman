@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TicketMan</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" type = "text/css"/>
+  </head>
+  <body>
+    <h1 class = "title">TicketMan</h1>
+    <div id = "homepage">
+      <h1>Check for events in your area</h1>
+      <div id="events"></div>
+    </div>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>﻿
+
+    <!-- Creating react comps -->
+
+    <script type = "text/babel">
+
+    var Events = React.createClass({
+      getInitialState: function(){
+        return({
+            events:[]
+        });
+      },
+
+      render:function(){
+        var events = this.state.events;
+        events = events.map(function(event, index){
+          return(
+            <li key = {index}>
+              <span className = "name">{event.obj.name}</span>
+              <span className = "location">{event.obj.location}</span>
+              <span className = "dist">{Math.floor(event.dis / 1000)} km </span>
+
+            </li>
+          )
+        });
+        return(
+          <div id = "event-container">
+            <form id = "search" onSubmit = {this.handleSubmit}>
+              <label>Enter your latitude:</label>
+              <input type = "text" ref = "lat" placeholder = "latitude" required/>
+              <label>Enter your longitude:</label>
+              <input type = "text" ref = "lng" placeholder = "longitude" required/>
+              <input type = "submit" value = "Find Events" />
+            </form>
+            <ul>{events}</ul>
+          </div>
+        );
+      },
+      handleSubmit: function(e){
+        e.preventDefault();
+        var lng = this.refs.lng.value;
+        var lat = this.refs.lat.value;
+
+        fetch('/api/events?lng=' + lng + '&lat=' + lat).then(function(data){
+          return data.json();
+        }).then( json  => {
+          this.setState({
+            events: json
+          });
+        });
+      }
+    });
+
+    ReactDOM.render(<Events/>, document.getElementById('events'));
+
+    </script>
+
+  </body>
+</html>
