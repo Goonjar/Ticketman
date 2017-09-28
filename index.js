@@ -1,4 +1,12 @@
-//nodemon index, run mongodb
+//nodemon index, run mongodb "C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe"
+/*
+/var/www/TicketMan
+npm run depoly
+cd /var/www/TicketMan
+npm install
+nodeapp.js
+
+*/
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -21,6 +29,8 @@ app.use('/api', require('./routes/api'));
 app.use('/venueapi', require('./routes/venueapi'));
 app.use('/ticketapi', require('./routes/ticketapi'));
 app.use('/userapi', require('./routes/userapi'));
+app.use('/accountapi', require('./routes/accountapi'));
+app.use('/transactionapi', require('./routes/transactionapi'));
 
 
 //Error handling

@@ -14,11 +14,17 @@ const UserSchema = new Schema({
   username: {
     type: String
   },
+  password: {
+    type: String
+  },
   email: {
     type: String
   },
   birthday: {
     type: Date
+  },
+  accountid: {
+    type: String
   }
 
 });

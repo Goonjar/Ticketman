@@ -10,6 +10,18 @@ const TicketSchema = new Schema({
   },
   seat: {
     type: String
+  },
+  price: {
+    type: Number
+  },
+  venueid: {
+    type: String
+  },
+  eventid: {
+    type: String
+  },
+  userid: {
+    type: String
   }
 
 });

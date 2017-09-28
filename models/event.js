@@ -22,6 +22,13 @@ const EventSchema = new Schema({
   location: {
     type: String
   },
+  venueid: {
+    type: String
+  },
+
+  eventdate: {
+    type: Date
+  },
 
   geometry: GeoSchema
 });
