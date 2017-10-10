@@ -43,11 +43,6 @@
         return(
           <div id = "user-container">
             <form id = "search" onSubmit = {this.handleSubmit}>
-            
-              <label>Enter firstname:</label>
-              <input type = "text" ref = "firstname" placeholder = "firstname" required/>
-              <label>Enter lastname:</label>
-              <input type = "text" ref = "lastname" placeholder = "lastname" required/>
 
               <input type = "submit" value = "Get Users" />
             </form>
@@ -57,10 +52,8 @@
       },
       handleSubmit: function(e){
         e.preventDefault();
-        var firstname = this.refs.firstname.value;
-        var lastname = this.refs.lastname.value;
 
-        fetch('/userapi/users?firstname=' + firstname + '&lastname=' + lastname).then(function(data){
+        fetch('/userapi/users?').then(function(data){
           return data.json();
         }).then( json  => {
           this.setState({
